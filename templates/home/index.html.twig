@@ -12,50 +12,5 @@
 <div class="example-wrapper">
     <h1>Hello {{ name }}</h1>
 
-{# Cette variable est de type string donc on peut l'afficher directement #}
-    <p>Ecris par {{ auteur }}</p>
-{# Article est un objet issu de la class std donc pour accèder a sa props.... #}
-    <h2> {{ article.title }} </h2>
-
-    <p> {{ article.intro }} </p>
-
-    <p>{{ article.content }}</p>
-
-    <cite>{{ auteur }}</cite>
-{# User pareil objet donc objet.proprieteName  #}
-    <h3>  {{ user.name }}  </h3>
-
-    <p> {{ user.age }}  </p>
-{# Ici de type string donc tout simplement le nom de la variable donner dans la vue ! #}
-    <p> {{ jeanDaniel }} </p>
-
-  {# Structure de controle - Je fais un if else qui affiche ou nou des elements html #}
-
-    {% if false %}
-
-        <p>Je suis la</p>
-         {# Ici j'interpole une image depuis le controller #}
-        <img width="350px" src="{{picture}}" >
-
-        {% else %}
-
-            <p>Je ne suis pas la</p>
-
-    {% endif %}
-
-    {# Ici les deux bloc if vont s'afficher, mais pas pour la meme raison #}
-    {# en 1er on vérifie que le titre est identique au titre dans le controller #}
-    {% if article.title == "Théorie du complot" %}
-        <p>Super c'est good</p>
-    
-    {% endif %}
-
-    {# ici on vérifie que le titre est set (définis) #}
-    {% if article.title  %}
-        <p>Super c'est good</p>
-    
-    {% endif %}
-
-
 </div>
 {% endblock %}
