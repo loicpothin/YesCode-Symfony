@@ -15,13 +15,13 @@ class HomeController extends AbstractController
 
      public function index(): Response
       {
-         $user = new stdClass();
-         $user->isConnected = false;
-
+          //   // Je déclare un tableau que j'envoie à la vue
+          $games = ["Starcraft 2", "BF6", "Métro Exodus"];
+        
          return $this->render('home/index.html.twig',[
-             'name' => "Page d'accueil",
-             'name' => "Page d'accueil",
-             "user" => $user 
+             'name' => "Bienvenue",
+             "games" => $games
+            
          ]);
      }
    

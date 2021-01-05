@@ -11,12 +11,18 @@
 
 <div class="example-wrapper">
     <h1>Hello {{ name  }}</h1>
+    <h2>Nos Jeux</h2>
 
-    {% if user.isConnected %}
-        <button>Déconnexion</button>
-        {% else %}
-            <button>Connexion</button>
-    {% endif %}
+    <hr>
+    {# Le nom game n'a pas d'importance c'est une variable qui n'existe que dans cette boucle 
+     par contre games viens de la vue , c'est notre tableau   #}
+    {% for game in games %}
+
+        <h3>{{game}}</h3>
+
+        <p>prix</p>
+
+    {% endfor %}
 
 </div>
 {% endblock %}
