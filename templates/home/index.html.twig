@@ -12,18 +12,11 @@
 <div class="example-wrapper">
     <h1>Hello {{ name  }}</h1>
 
-    {# brute de pomme sans filtre #}
-    <p>{{city}}</p>
+    {% set item = {"nom": "pomme", "forme": "ronde", "poids": 200 } %}
 
-    <hr>
-
-    {# Le contenu est ecrit en majuscule / GOTHAM #}
-    <p>{{city | upper}}</p>
-
-    <hr>
-
-    {# La 1er lettre est en majuscule #}
-    <p>{{city | title}}</p>
+    <p>Name: {{item.nom}}</p>
+    <p>Shape: {{item.forme}}</p>
+    <p>Weight: {{item.poids}} g.</p>
 
 </div>
 {% endblock %}
