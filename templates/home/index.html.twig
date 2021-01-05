@@ -1,3 +1,4 @@
+
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello HomeController!{% endblock %}
@@ -9,19 +10,22 @@
 </style>
 
 <div class="example-wrapper">
-
-    <h1> Hello {{name}}! ✅</h1>
+    <h1>Hello {{ name }}</h1>
 
 {# Cette variable est de type string donc on peut l'afficher directement #}
-    <p> Ecris par {{auteur}}</p>
+    <p>Ecris par {{ auteur }}</p>
+{# Article est un objet issu de la class std donc pour accèder a sa props.... #}
+    <h2> {{ article.title }} </h2>
 
-{# Article est un objet issu de la class STD donc pour accéder a sa proriété #}
-    <H2> {{article.title}}</H2>
+    <p> {{ article.intro }} </p>
 
-    <p> {{article.intro}}</p>
+    <p>{{ article.content }}</p>
+{# User pareil objet donc objet.proprieteName  #}
+    <h3>  {{ user.name }}  </h3>
 
-    <p> {{article.content}}</p>
-    
+    <p> {{ user.age }}  </p>
+{# Ici de type string donc tout simplement le nom de la variable donner dans la vue ! #}
+    <p> {{ jeanDaniel }} </p>
+
 </div>
 {% endblock %}
-

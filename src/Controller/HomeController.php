@@ -25,12 +25,21 @@ class HomeController extends AbstractController
         $article ->title = "Théorie du complot 🧐🧐🧐";
         $article ->intro = "Fascine depuis des lustres ! on vous dit tout 🤪🤪🤪";
         $article ->content = "Bla bla bla , Pa pa pa , Po po po";
+
+        // J'instancie un autre objet
+        $michel = new stdClass();
+        $michel->name = "Michel";
+        $michel->age = 58;
+
+        $outcast = "JD3000";
         
         // je file tout ça à ma vue pour l'afficher 
         return $this->render('home/index.html.twig', [
             'name' => "Page d'accueil",
             "article" => $article,
-            "auteur" => $author
+            "auteur" => $author,
+            "user"    => $michel,
+            "jeanDaniel" =>  $outcast
         ]);
     }
 }
