@@ -13,8 +13,11 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
+        
+        // Je déclare un name qui sera envoyé à la vue 
+        // Et qui contient -> Page d'accueil  - dans la vu j'utilise la var name  
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
+            'name' => "Page d'accueil",
         ]);
     }
 }
