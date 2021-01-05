@@ -12,7 +12,20 @@ class HomeController extends AbstractController
     /**
      * @Route("/home", name="home")
      */
+
+     public function index(): Response
+      {
+         $user = new stdClass();
+         $user->isConnected = false;
+
+         return $this->render('home/index.html.twig',[
+             'name' => "Page d'accueil",
+             'name' => "Page d'accueil",
+             "user" => $user 
+         ]);
+     }
    
+    
        
 
 }
