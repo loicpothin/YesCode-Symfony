@@ -9,14 +9,19 @@
 </style>
 
 <div class="example-wrapper">
-{# Je recupere le name de le controller#}
-    <h1>Hello {{name}}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/loicpothin/Desktop/symfony_Lyon/YesCode/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/loicpothin/Desktop/symfony_Lyon/YesCode/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
+    <h1> Hello {{name}}! ✅</h1>
+
+{# Cette variable est de type string donc on peut l'afficher directement #}
+    <p> Ecris par {{auteur}}</p>
+
+{# Article est un objet issu de la class STD donc pour accéder a sa proriété #}
+    <H2> {{article.title}}</H2>
+
+    <p> {{article.intro}}</p>
+
+    <p> {{article.content}}</p>
+    
 </div>
 {% endblock %}
 
