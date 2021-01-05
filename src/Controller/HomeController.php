@@ -15,7 +15,7 @@ class HomeController extends AbstractController
     public function index(): Response
     {
         // je déclare une variable  php de type string 
-        $author = "Lois Lane";
+        $author = "Loïs Lane";
 
         // J'instancie un objet standard PHP sans class fait par nous même
         // je n'oublie pas l'import / NameSpaceRevolver -> plugin 
@@ -32,6 +32,9 @@ class HomeController extends AbstractController
         $michel->age = 58;
 
         $outcast = "JD3000";
+
+        // Je déclare une variable / plus tard dynamique depuis une bdd !
+        $picture = "https://www.rollingstone.com/wp-content/uploads/2019/12/andre-3000.jpg";
         
         // je file tout ça à ma vue pour l'afficher 
         return $this->render('home/index.html.twig', [
@@ -39,7 +42,8 @@ class HomeController extends AbstractController
             "article" => $article,
             "auteur" => $author,
             "user"    => $michel,
-            "jeanDaniel" =>  $outcast
+            "jeanDaniel" =>  $outcast,
+            "image" => $picture
         ]);
     }
 }
