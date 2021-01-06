@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>YesCode - {% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        <h1>Bienvenue sur Yes Code - Bannière</h1>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+	<head>
+		<meta charset="UTF-8">
+		<title>YesCode - {% block title %}{% endblock %}</title>
+		{% block stylesheets %}{% endblock %}
+	</head>
+	<body>
+		<h1>Bienvenue sur Yes Code - Bannière</h1>
+
+		{% block bidule %}
+			<p>Dans la base</p>
+		{% endblock %}
+
+		{% block body %}{% endblock %}
+		{% block javascripts %}{% endblock %}
+	</body>
+
 </html>
