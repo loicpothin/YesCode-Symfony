@@ -5,11 +5,11 @@
 {% block body %}
     <h2>Nos Articles</h2>
 
-    {% if block ("footer") %}
-     <p>tu as refait un footer ? PK ?</p>
-    {% endif %}
-
+    <a href="{{ path("home_page")}}">
+        Vers Page d'accueil
+    </a>
 {% endblock %}
 
-{% block footer %}Je suis un footer {% endblock %}
+
+
 
