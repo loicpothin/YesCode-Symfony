@@ -1,37 +1,52 @@
-
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello !{% endblock %}
+{% block title %}Hello !
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { color:red; margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<style>
+		.example-wrapper {
+			color: red;
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ name }}</h1>
+	<div class="example-wrapper">
+		<h1>Hello
+			{{ name }}</h1>
 
-    {% set michel = {"name": "Michel", "age": 14} %}
-    {% set zak = {"name": "zAK", "age": 33} %}
-    {% set david = {"name": "daVID", "age": null} %}
-    {% set robert = {"name": "Robert", "age": 34} %}
-    {% set users = {michel,zak,david,robert} %}
+		{#Je crée des variable de Twig rien dans le controller  #}
+		{% set michel = {"name": "Michel", "age": 14, "cheveux": "Noir"} %}
+		{% set zak = {"name": "zAK", "age": 33, "cheveux": "rouge"} %}
+		{% set david = {"name": "daVID", "age": null, "cheveux": "gris"} %}
+		{% set nicolas = {"name": "Nicolas", "age": 34, "cheveux": "bleu"} %}
+		{% set users = {michel,zak,david,nicolas} %}
 
-    {% for user in users %}
+		{# je boucle sur mon tableau TWIG(user) comme un tableau venant du controller en php #}
+		{% for user in users %}
+            {# J'utile un filtre pour etre sur que l'affichage soit toujours correct (TITLE) #}
+			<p>Name:{{user.name | title}}</p>
 
-        <p>Name: {{user.name | title}} </p>
-       
-        {% if user.age %}
-            <p>Age: {{user.age}}</p>   
-         {% else %}
-            <p>Age: Undefined</p>
-        {% endif %}
+			{% if user.age %}
+				<p>Age:{{user.age}}</p>
+			{% else %}
+				<p>Age: NC (non communiqué)</p>
+			{% endif %}
 
-        <hr> 
+            {#méthode pour ajouter plusieur vaariable et toujour le mettre a l'exterieur de la boucle #}
+            <p>cheveux:{{user.cheveux | title}}</p>
 
-    {% endfor %} 
+			<hr>
 
-      
-</div>
+		{% endfor %}
+
+
+	</div>
 {% endblock %}
