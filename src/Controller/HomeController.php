@@ -2,13 +2,11 @@
 
 namespace App\Controller;
 
-use stdClass;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class HomeController extends AbstractController
-{
+class HomeController extends AbstractController{
     /**
      * @Route("/", name="home_page")
      */
@@ -21,14 +19,5 @@ class HomeController extends AbstractController
          ]);
      }
 
-     /**
-     * @Route("/articles", name="articles_list")
-     */
-
-    public function articlesList()
-    {
-       return $this->render('home/articles.list.html.twig',[
-           
-       ]);
-   }
+     
 }
