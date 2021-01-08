@@ -25,8 +25,9 @@ class HomeController extends AbstractController{
         // permet d'afficher tous ce qu'il y dans la BBD coté vue (page site)
         //  {{ dump(fruits) }} A ajouter coter vue donc dans index
         "fruits" => $fruits
+        
+        ]);
 
-      ]);
     }
 
      
