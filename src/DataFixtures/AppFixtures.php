@@ -26,13 +26,12 @@ class AppFixtures extends Fixture
 
             $content = '<p>' . implode('</p><p>',$faker->paragraphs(5)) . '</p>';
 
-            $createdAt = $faker->dateTimeBetween('- 1 months');
 
             $article->setTitle($title)
                     ->setImage($image)
                     ->setIntro($intro)
-                    ->setContent($content)
-                    ->setCreatedAt($createdAt);
+                    ->setContent($content);
+                   
 
             $manager->persist($article);
             }

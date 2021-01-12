@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticleRepository;
+use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ArticleRepository;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * @ORM\HasLifecycleCallbacks
  */
 class Article
 {
@@ -28,6 +30,11 @@ class Article
     private $intro;
 
     /**
+     * @ORM\Column(type="text")
+     */
+    private $content;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $image;
@@ -38,9 +45,37 @@ class Article
     private $createdAt;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=255)
      */
-    private $Content;
+    private $slug;
+
+    /**
+     * Génére un slug automatiquement
+     * 
+     * @ORM\PrePersist
+     *
+     * @return void
+     */
+    public function initSlug(){
+        if(empty($this->slug)){
+            $slugify = new Slugify();
+            $this->slug = $slugify->slugify($this->getTitle() . time() . hash("sha1", $this->getIntro() ));
+        }
+    }
+
+    /**
+     * Génére la date automatiquement
+     * 
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     *
+     * @return void
+     */
+    public function updateDate(){
+        if(empty($this->createdAt)){
+            $this->createdAt = new \DateTime();
+        }
+    }
 
     public function getId(): ?int
     {
@@ -71,6 +106,18 @@ class Article
         return $this;
     }
 
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(string $content): self
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
     public function getImage(): ?string
     {
         return $this->image;
@@ -95,14 +142,14 @@ class Article
         return $this;
     }
 
-    public function getContent(): ?string
+    public function getSlug(): ?string
     {
-        return $this->Content;
+        return $this->slug;
     }
 
-    public function setContent(string $Content): self
+    public function setSlug(string $slug): self
     {
-        $this->Content = $Content;
+        $this->slug = $slug;
 
         return $this;
     }
