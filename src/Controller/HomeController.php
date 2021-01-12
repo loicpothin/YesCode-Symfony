@@ -19,12 +19,12 @@ class HomeController extends AbstractController
   {
     $articles = $repo->findLastArticles(3);
 
+    $article =$repo->findOneById(55);
 
     $slugify = new Slugify();
 
-    $title ="la théorie des cordes à linges Gravitationnelles";
+    $slug = $slugify->slugify($article->getTitle(). time());
 
-    $slug = $slugify->slugify($title);
     dump($slug);
 
     return $this->render('home/index.html.twig', [
