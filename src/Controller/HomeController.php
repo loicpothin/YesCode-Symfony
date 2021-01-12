@@ -16,7 +16,7 @@ class HomeController extends AbstractController
   public function index(ArticleRepository $repo): Response
   {
     $articles = $repo->findLastArticles(3);
-
+    
     return $this->render('home/index.html.twig', [
       "articles" => $articles,
       
