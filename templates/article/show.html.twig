@@ -7,14 +7,17 @@
     <div class="container">
         <h1 class="my-5 text-center">{{article.title}}</h1>
 
-        <p class="text-left">écris le:
+        <p class="text-left" style="color: red;">écris le:
              {{ article.createdAt | date('d/m/Y à H:i')}}
         </p>
 
-        <p class="my-2 border p-2 text-center">{{article.intro}}</p>
+        <div class="my-2 border text-center" style="background-color: #eee;">
+          <p>{{article.intro}}</p>
+        </div>
 
-        <div class="text-center">
-          <img src="{{article.image}}" alt="photo de l'article {{article.title}}">
+
+        <div class=" text-center">
+          <img class="w-50  p-2" src="{{article.image}}" alt="photo de l'article {{article.title}}">
         </div>
 
         <div class="my-5 text-center">
@@ -26,3 +29,9 @@
      </div>
 
 {% endblock %}
+
+
+
+  
+
+  
