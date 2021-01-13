@@ -11,11 +11,13 @@
              {{ article.createdAt | date('d/m/Y à H:i')}}
         </p>
 
-        <p class="my-2 border p-2">{{article.intro}}</p>
+        <p class="my-2 border p-2 text-center">{{article.intro}}</p>
 
-        <img src="{{article.image}}" alt="photo de l'article {{article.title}}">
+        <div class="text-center">
+          <img src="{{article.image}}" alt="photo de l'article {{article.title}}">
+        </div>
 
-        <div class="my-5">
+        <div class="my-5 text-center">
             <hr>
              <p> {{article.content | raw}}</p>
             <hr>

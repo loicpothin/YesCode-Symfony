@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Article;
 use App\Repository\ArticleRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,8 +24,19 @@ class ArticleController extends AbstractController
         ]);
     }
 
+    
+      /**
+     * @Route("/articles/new", name="article_create")
+     */
+    public function create(): Response
+    {
 
-  
+        return $this->render('article/create.html.twig', [
+          
+        ]);
+    }
+
+
     /**
      * @Route("/articles/{slug}", name="article_show")
      */
@@ -39,6 +48,9 @@ class ArticleController extends AbstractController
             'article' => $article
         ]);
     }
+
+
+   
 
 
 }
