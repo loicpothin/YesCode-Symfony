@@ -9,18 +9,28 @@
 
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav mr-auto">
+
         <li class="nav-item ">
           <a class="nav-link" href="{{ path('home_page') }}">
             <i class="fa fa-home"></i>
             Accueil
           </a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="{{ path('articles_index') }}">
             <i class="fas fa-newspaper"></i>
             Articles
           </a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('article_create') }}">
+            <i class="fas fa-pen"></i>
+           Ecrire un article
+          </a>
+        </li>
+
       </ul>
 
       {% set user = {"firstname":"loic", "lastname": "pothin", "role": "admin" , 'isConnected': true} %}
@@ -35,6 +45,7 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" href="#">Mon Profil</a>
+                <a class="dropdown-item" href="{{ path('article_create') }}">Ecrire un article</a>
                 <a class="dropdown-item" href="#">Mes articles</a>
 
                 {% if user.role == "admin" %}
