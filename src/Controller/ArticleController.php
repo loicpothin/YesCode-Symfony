@@ -15,6 +15,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ArticleController extends AbstractController
 {
     /**
+     * *****************************************
+     * ROUTE QUI DIRIGE VERS LA PAGE D''ARTICLE 
+     * *****************************************
+   * 
+     * 
      * @Route("/articles", name="articles_index")
      */
 
@@ -30,7 +35,9 @@ class ArticleController extends AbstractController
 
      
     /**
-     * Route qui dirige vers le formulaire 
+     * **************************************
+     * ROUTE QUI DIRIGE VERS LE FORMULAIRE 
+     * **************************************
      * 
      * @Route("/articles/new", name="article_create")
      */
@@ -42,7 +49,8 @@ class ArticleController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
            
             $manager->persist($article);
 
@@ -52,13 +60,15 @@ class ArticleController extends AbstractController
                              "L'article <strong>{$article->getTitle()}</strong> a bien été créé");
             
 
-            return $this->redirectToRoute('article_show',[
+            return $this->redirectToRoute('article_show',
+            [
                 'slug' => $article->getSlug()
 
             ]);
         }
 
-        return $this->render('article/create.html.twig', [
+        return $this->render('article/create.html.twig', 
+        [
             'form' => $form->createView()
           
         ]);
@@ -66,7 +76,9 @@ class ArticleController extends AbstractController
 
         
     /**
-     * Route qui dirige vers l'article 
+      **************************************
+     * ROUTE QUI DIRIGE VERS L'ARTICLE  
+     * **************************************
      * 
      * @Route("/articles/{slug}", name="article_show")
      */
@@ -79,11 +91,13 @@ class ArticleController extends AbstractController
         ]);
     }
 
+}
+
 
    
 
 
-}
+
 
     
 

@@ -5,9 +5,9 @@
 {% block body %}
  
     <div class="container">
-        <h1 class="my-5">Nos Articles</h1>
+        <h1 class="my-5 text-center text-white bg-info p-2 rounded-pill">Nos Articles</h1>
 
-        <div class="row flex-lg-row flex-xl-row flex-column">
+        <div class="row flex-lg-row flex-xl-row flex-column font-italic ">
             {% for article in articles %}
                 
                 {% include "partials/card.article.html.twig" %}

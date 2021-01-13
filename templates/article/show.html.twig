@@ -5,22 +5,22 @@
 {% block body %}
  
     <div class="container">
-        <h1 class="my-5 text-center">{{article.title}}</h1>
+        <h1 class="my-5 my-5 text-center text-white bg-info p-2 rounded-pill">{{article.title}}</h1>
 
-        <p class="text-left">écris le:
+        <p class="text-left font-italic">écris le:
              {{ article.createdAt | date('d/m/Y à H:i')}}
         </p>
 
-        <div class="my-2 border text-center text-uppercase" style="background-color: #eee;">
+        <div class="my-2 border text-center text-uppercase font-italic">
           <p>{{article.intro}}</p>
         </div>
 
 
-        <div class=" text-center">
+        <div class="text-center ">
           <img class="w-50 p-2" src="{{article.image}}" alt="photo de l'article {{article.title}}">
         </div>
 
-        <div class="my-5 text-center">
+        <div class="my-5 text-center font-italic">
             <hr>
              <p> {{article.content | raw}}</p>
             <hr>

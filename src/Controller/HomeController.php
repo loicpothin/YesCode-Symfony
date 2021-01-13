@@ -10,6 +10,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomeController extends AbstractController
 {
   /**
+   *  *****************************************
+     * ROUTE QUI DIRIGE VERS LA PAGE D'ACCUEIL 
+     * ****************************************
+   * 
+   *
    * @Route("/", name="home_page")
    */
 

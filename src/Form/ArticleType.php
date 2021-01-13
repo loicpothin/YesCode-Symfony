@@ -11,10 +11,16 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
+
+/**
+ *******************************************************************
+ *PERMET DE GÉNÉRE UN FORMULAIRE ET FUNCTION DANS ARTICLECONTROLLER
+ * *****************************************************************
+*/
 class ArticleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    { 
         $builder
             ->add('title', TextType::class,[
                 'label' => 'Titre de l\'article',
