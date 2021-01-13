@@ -21,7 +21,7 @@ class ArticleType extends AbstractType
                 'attr'  => ['placeholder' => 'Tapez votre titre ici !' ]
             ])
             ->add('intro', TextType::class,[
-                'label' => 'Titre de l\'article',
+                'label' => 'Titre de l\'intro',
                 'attr'  => ['placeholder' => 'Une phrase d\'accroche !']
             ])
             ->add('content',TextareaType::class,[
