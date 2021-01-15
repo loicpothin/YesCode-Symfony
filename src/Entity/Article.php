@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Cocur\Slugify\Slugify;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ArticleRepository;
 
@@ -16,25 +17,41 @@ class Article
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * 
      */
     private $id;
 
     /**
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 255,
+     *      minMessage = "Un Titre aussi court ? Minimum 5 caractére requis !",
+     *      maxMessage = "Un Titre de moins de 255 caractére est requis !")
+     * 
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
+     * @Assert\Length(
+     *      min = 20,
+     *      max = 255,
+     *      minMessage = "Minimum 20 caractére pour l'intro!",
+     *      maxMessage = "Plus de de 255 caractére ce n'est plus une intro!")
+     * 
      * @ORM\Column(type="string", length=255)
      */
     private $intro;
 
     /**
+     * @Assert\NotBlank(message ="Ce champs ne peut être vide !")
      * @ORM\Column(type="text")
      */
     private $content;
 
     /**
+     * 
+     * @Assert\Url(message = "Ceci n'est pas une URL")
      * @ORM\Column(type="string", length=255)
      */
     private $image;

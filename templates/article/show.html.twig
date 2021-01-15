@@ -1,37 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{article.title}}{% endblock %}
-
-{% block body %}
- 
-    <div class="container">
-        <h1 class="my-5 my-5 text-center text-white bg-info p-2 rounded-pill">{{article.title}}</h1>
-
-        <p class="text-left font-italic">écris le:
-             {{ article.createdAt | date('d/m/Y à H:i')}}
-        </p>
-
-        <div class="my-2 border text-center text-uppercase font-italic">
-          <p>{{article.intro}}</p>
-        </div>
-
-
-        <div class="text-center ">
-          <img class="w-50 p-2" src="{{article.image}}" alt="photo de l'article {{article.title}}">
-        </div>
-
-        <div class="my-5 text-center font-italic">
-            <hr>
-             <p> {{article.content | raw}}</p>
-            <hr>
-        </div>
-
-     </div>
-
+{% block title %}
+	{{article.title}}
 {% endblock %}
 
+{% block body %}
 
+	<div class="container">
+		<h1 class="my-5 text-center text-white bg-info p-2 rounded-pill">{{article.title}}</h1>
+		<div class="row">
+			<div class="col-4">
+				<p class="text-left font-italic">écris le:
+					{{ article.createdAt | date('d/m/Y à H:i')}}
+				</p>
+			</div>
+			<div>
+				<a href="{{ path('article_edit', {'slug': article.slug } ) }}" class="btn btn-info mx-2 rounded-pill">
+					Modifier l'Article
+					<i class="fa fa-pen"></i>
+				</a>
 
-  
+				<form class="d-inline" action="{{ path('article_delete', {'slug': article.slug} ) }}" 
+          onsubmit="return confirm('Etes vous sur de vouloir supprimer cette article ?);">
+					<button class="btn btn-danger mx-2 rounded-pill">
+						Supprimer l'article
+						<i class="fa fa-trash"></i>
+					</button>
+				</form>
+			</div>
+		</div>
 
-  
+		<div class="my-2 border text-center text-uppercase font-italic">
+			<p>{{article.intro}}</p>
+		</div>
+    
+		<div class="text-center ">
+			<img class="w-50 p-2" src="{{article.image}}" alt="photo de l'article {{article.title}}">
+		</div>
+
+		<div class="my-5 text-center font-italic">
+			<hr>
+			<p>
+				{{article.content | raw}}</p>
+			<hr>
+		</div>
+
+	</div>
+
+{% endblock %}

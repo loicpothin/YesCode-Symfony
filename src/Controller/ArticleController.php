@@ -41,15 +41,14 @@ class ArticleController extends AbstractController
      * 
      * @Route("/articles/new", name="article_create")
      */
-    public function create(Request $request, EntityManagerInterface $manager): Response
-    {
+    public function create(Request $request, EntityManagerInterface $manager): Response{
         $article = new Article();
 
         $form = $this->createForm(ArticleType::class, $article);
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) 
+        if ($form->isSubmitted() && $form->isValid())
         {
            
             $manager->persist($article);
@@ -62,12 +61,13 @@ class ArticleController extends AbstractController
 
             return $this->redirectToRoute('article_show',
             [
+
                 'slug' => $article->getSlug()
 
             ]);
         }
 
-        return $this->render('article/create.html.twig', 
+        return $this->render('article/create.html.twig',
         [
             'form' => $form->createView()
           
@@ -89,6 +89,56 @@ class ArticleController extends AbstractController
         return $this->render('article/show.html.twig', [
             'article' => $article
         ]);
+    }
+
+    /**
+     * **************************************
+     * ROUTE QUI DIRIGE VERS EDIT 
+     * **************************************
+     * 
+     * @Route("/articles/{slug}/edit", name="article_edit")
+     */
+    public function edit(Request $request, Article $article, EntityManagerInterface $manager): Response
+    {
+        $form = $this->createForm(ArticleType::class, $article);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->persist($article);
+            $manager->flush();
+
+            $this->addFlash('info', 
+                            "L'article <strong>{$article->getTitle()}</strong> a bien été modifié");
+
+            return $this->redirectToRoute('article_show' , [
+                'slug' => $article->getSlug()
+            ]);
+        }
+
+        return $this->render('article/edit.html.twig', [
+            'article' => $article,
+            'form' => $form->createView()
+        ]);
+    
+    }
+
+
+    /**
+     * **************************************
+     * ROUTE QUI DIRIGE VERS DELETE
+     * **************************************
+     * 
+     * @Route("/articles/{slug}/delete", name="article_delete")
+     */
+    public function delete( EntityManagerInterface $manager, Article $article ): Response
+    {
+        $manager->remove($article);
+        $manager->flush();
+        
+        $this->addFlash('danger', "L'article à bien été supprimer" );
+
+            return $this->redirectToRoute('articles_index');
     }
 
 }
